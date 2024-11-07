@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moda Sipariş Sistemi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container my-5">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white text-center">
+                <h2>Moda Sipariş Sistemi</h2>
+                <p class="mb-0">Lütfen almak istediğiniz ürünleri ve ekstra seçenekleri seçin</p>
+            </div>
+            <div class="card-body">
+                <form action="/siparis" method="post">
+                    <h5 class="mt-4">Kıyafet Seçimi</h5>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="pantolon" id="pantolon">
+                        <label class="form-check-label" for="pantolon">Pantolon :1350TL</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="gomlek" id="gomlek">
+                        <label class="form-check-label" for="gömlek">Gömlek :850TL</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="ayakkabi" id="ayakkabi">
+                        <label class="form-check-label" for="ayakkabı">Ayakkabı :1500TL</label>
+                    </div>
+
+                    <h5 class="mt-4">Ekstra Seçenekler</h5>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="tisort" id="tisort">
+                        <label class="form-check-label" for="tişört">Tişört :250TL</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="corap" id="corap">
+                        <label class="form-check-label" for="çorap">Çorap :150TL</label>
+                    </div>
+
+                    <h5 class="mt-4">Mont Seçeneği</h5>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="mont" id="mont">
+                        <label class="form-check-label" for="mont">Mont :850TL</label>
+                    </div>
+                    <button type="submit" id="siparisBtn" class="btn btn-primary mt-4 w-100" disabled>Sipariş Ver</button>
+                </form>   
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function kontrolEt() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const siparisBtn = document.getElementById('siparisBtn');
+            let enAzBirUrunSecildi = false;
+
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    enAzBirUrunSecildi = true;
+                }
+            });
+
+            siparisBtn.disabled = !enAzBirUrunSecildi;
+        }
+
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', kontrolEt);
+        });
+
+        window.onload = kontrolEt;
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
